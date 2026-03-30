@@ -6,46 +6,45 @@ public class TrainApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // UC1: Initialize
+        // UC1
         List<String> trainConsist = new ArrayList<>();
-        System.out.println("Train consist initialized.");
         System.out.println("Initial bogies: " + trainConsist.size());
 
-        // UC2: Passenger bogies
+        // UC2
         trainConsist.add("Sleeper");
         trainConsist.add("AC Chair");
         trainConsist.add("First Class");
 
-        // UC3: Unique IDs
+        // UC3
         Set<String> bogieIds = new HashSet<>();
         bogieIds.add("BG101");
         bogieIds.add("BG102");
         bogieIds.add("BG101"); // duplicate ignored
 
-        // UC4: Ordered train using LinkedList
-        System.out.println("\nCreating ordered train consist...");
-
+        // UC4
         LinkedList<String> orderedTrain = new LinkedList<>();
-
-        // Add bogies
         orderedTrain.add("Engine");
         orderedTrain.add("Sleeper");
         orderedTrain.add("AC");
         orderedTrain.add("Cargo");
         orderedTrain.add("Guard");
 
-        System.out.println("Initial train: " + orderedTrain);
+        // UC5: LinkedHashSet (Order + Uniqueness)
+        System.out.println("\nCreating train formation with LinkedHashSet...");
 
-        // Insert Pantry at position 2
-        orderedTrain.add(2, "Pantry");
-        System.out.println("After adding Pantry at position 2: " + orderedTrain);
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
 
-        // Remove first and last
-        orderedTrain.removeFirst();
-        orderedTrain.removeLast();
+        // Add bogies
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
 
-        // Final consist
-        System.out.println("Final ordered train: " + orderedTrain);
+        // Attempt duplicate
+        formation.add("Sleeper"); // duplicate ignored
+
+        // Display formation
+        System.out.println("Final Train Formation: " + formation);
 
         System.out.println("\nSystem ready for further operations.");
     }

@@ -19,7 +19,7 @@ public class TrainApp {
         Set<String> bogieIds = new HashSet<>();
         bogieIds.add("BG101");
         bogieIds.add("BG102");
-        bogieIds.add("BG101"); // duplicate ignored
+        bogieIds.add("BG101");
 
         // UC4
         LinkedList<String> orderedTrain = new LinkedList<>();
@@ -29,22 +29,28 @@ public class TrainApp {
         orderedTrain.add("Cargo");
         orderedTrain.add("Guard");
 
-        // UC5: LinkedHashSet (Order + Uniqueness)
-        System.out.println("\nCreating train formation with LinkedHashSet...");
-
+        // UC5
         LinkedHashSet<String> formation = new LinkedHashSet<>();
-
-        // Add bogies
         formation.add("Engine");
         formation.add("Sleeper");
         formation.add("Cargo");
         formation.add("Guard");
-
-        // Attempt duplicate
         formation.add("Sleeper"); // duplicate ignored
 
-        // Display formation
-        System.out.println("Final Train Formation: " + formation);
+        // UC6: HashMap (Bogie → Capacity)
+        System.out.println("\nMapping bogies to capacity...");
+
+        HashMap<String, Integer> bogieCapacity = new HashMap<>();
+
+        // Adding key-value pairs
+        bogieCapacity.put("Sleeper", 72);
+        bogieCapacity.put("AC Chair", 54);
+        bogieCapacity.put("First Class", 24);
+
+        // Iterating and displaying
+        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
+            System.out.println(entry.getKey() + " → Capacity: " + entry.getValue());
+        }
 
         System.out.println("\nSystem ready for further operations.");
     }
